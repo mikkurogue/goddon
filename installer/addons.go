@@ -3,14 +3,28 @@ package installer
 import (
 	"log"
 	"os"
+	"slices"
 )
 
 func Install(addon, v, dir string) {
 	// TODO: make this install an addon provided
+	if isInstalled(addon, dir) {
+		return
+	}
 }
 
 func Update(addon, v, dir string) {
 	// TODO: make this update an addon provided
+	if isInstalled(addon, dir) {
+		return
+	}
+}
+
+func Remove(addon, dir string) {
+	// TODO: make this remove an addon provided
+	if isInstalled(addon, dir) {
+		return
+	}
 }
 
 func InstalledAddons(v, dir string) []string {
@@ -25,4 +39,10 @@ func InstalledAddons(v, dir string) []string {
 	}
 
 	return names
+}
+
+// util to check if an addon is already installed.
+func isInstalled(addon, dir string) bool {
+	installed := InstalledAddons("retail", dir)
+	return slices.Contains(installed, addon)
 }
