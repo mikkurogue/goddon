@@ -2,19 +2,14 @@ package main
 
 import (
 	"fmt"
-	"log"
-	"os"
+	"goddons/installer"
 )
 
 func main() {
 
-	entries, err := os.ReadDir("Z:/World of Warcraft/_retail_/interface/addons")
-	if err != nil {
-		log.Fatal("Fatal error no wow addon folder found for retail")
-	}
-
-	for _, e := range entries {
-		fmt.Println(e.Name())
+	fmt.Println("Installed addons")
+	for _, item := range installer.InstalledAddons("retail", "Z:/World of Warcraft/_retail_/interface/addons") {
+		fmt.Println(item)
 	}
 
 }

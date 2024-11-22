@@ -28,7 +28,7 @@ func Remove(addon, dir string) {
 }
 
 func InstalledAddons(v, dir string) []string {
-	entries, err := os.ReadDir("Z:/World of Warcraft/_retail_/interface/addons")
+	entries, err := os.ReadDir(dir)
 	if err != nil {
 		log.Fatal("Fatal error no wow addon folder found for retail")
 	}
